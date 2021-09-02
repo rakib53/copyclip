@@ -93,11 +93,10 @@
 
         copy.addEventListener("click", ()=>{
             popup.classList.add("active")
+            setTimeout(()=>{
+              popup.classList.remove("active")  
+            },1000)
         })
-        copy.addEventListener("animationend", ()=>{
-            popup.classList.remove("active")
-        })
-
 
     </script>
 </body>
