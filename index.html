@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy To clipBorad</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+
+        }
+        .conatiner{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content{
+            width: 400px;
+            height: 200px;
+            overflow: scroll;
+        }
+
+        #popup{
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            padding: 6px 12px;
+            border-radius: 5px;
+            background-color: brown;
+            color: #fff;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .active{
+            animation: slideText 1s ease-in-out forwards;
+        }
+
+        @keyframes slideText{
+            0%{
+                opacity: 0;
+                pointer-events: none;
+                transform: translate(-50%, -10px);
+            }
+
+            40%{
+                opacity: 1;
+                pointer-events: auto;
+                transform: translate(-50%, 0px);
+            }
+
+            80%{
+                opacity: 1;
+                pointer-events: auto;
+                transform: translate(-50%, 0px);
+            }
+
+            100%{
+                opacity: 0;
+                pointer-events: none;
+                transform: translate(-50%, -10px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="conatiner">
+        <div class="content">
+            <p id="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus ipsa iusto quasi dignissimos omnis veniam numquam repellendus nisi! Nobi</p>
+            <br>
+            <button id="copy">Copy</button>
+            <p id="popup">Copied</p>
+        </div>
+    </div>
+
+    <script>
+        const paragraph = document.getElementById("paragraph");
+        const copy = document.getElementById("copy");
+        const popup = document.getElementById("popup");
+
+        copy.addEventListener("click", ()=>{
+            popup.classList.add("active")
+        })
+        copy.addEventListener("animationend", ()=>{
+            popup.classList.remove("active")
+        })
+
+
+    </script>
+</body>
+</html>
